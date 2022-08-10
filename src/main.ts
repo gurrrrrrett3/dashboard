@@ -1,3 +1,4 @@
+import UpdateManager from "./modules/manager/updateManager";
 import WindowManger from "./modules/manager/windowManager";
 
 const canvas = document.getElementById('canvas') as HTMLCanvasElement;
@@ -10,7 +11,8 @@ updateSize();
 
 window.addEventListener('resize', updateSize);
 
-const windowManager = new WindowManger(ctx);
+export const updateManager = new UpdateManager()
+export const windowManager = new WindowManger(ctx);
 
 function updateSize() {
     canvas.width = window.innerWidth;
@@ -29,7 +31,3 @@ async function render() {
 }
 
 setInterval(render, 1000 / 60);
-
-setInterval(() => {
-    windowManager.update()
-}, 1000);
